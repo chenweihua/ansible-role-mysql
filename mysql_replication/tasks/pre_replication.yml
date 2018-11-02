@@ -1,3 +1,8 @@
+- name: Ensure firewalld is close
+  service: name=firewalld state=stopped enabled=no
+  tags: 
+    - firewall
+
 - name: Copy user-my.cnf file with password credentials
   template: 
     src: user-my.cnf
