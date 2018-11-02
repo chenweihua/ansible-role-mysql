@@ -5,14 +5,14 @@
 
 - name: Copy user-my.cnf file with password credentials
   template: 
-    src: user-my.cnf
+    src: user-my.cnf.j2
     dest: "{{ mysql_user_home }}/.my.cnf"
     owner: "{{ mysql_user_username }}" 
     mode: 0600
 
 - name: Copy root-my.cnf file with password credentials
   template: 
-    src: root-my.cnf
+    src: root-my.cnf.j2
     dest: "{{ mysql_root_home }}/.my.cnf"
     owner: "{{ mysql_root_username }}"
     mode: 0600

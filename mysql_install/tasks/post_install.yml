@@ -2,7 +2,7 @@
   shell: echo "export PATH=\$PATH:{{ mysql_basedir }}/mysql/bin" >> ~/.bashrc
 
 - name: create mysqld.service
-  template: src=mysqld.service dest=/usr/lib/systemd/system/mysqld.service
+  template: src=mysqld.service.j2 dest=/usr/lib/systemd/system/mysqld.service
 
 - name: soft link to mysqld.service
   file: src=/usr/lib/systemd/system/mysqld.service  path=/etc/systemd/system/multi-user.target.wants/mysqld.service state=link

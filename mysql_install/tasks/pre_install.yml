@@ -5,10 +5,10 @@
   file: path={{ mysql_datadir }} owner=mysql group=mysql state=directory
 
 - name: copy my.cnf to client
-  template: src=my.cnf dest=/etc/my.cnf owner=root group=root backup=yes
+  template: src=my.cnf.j2 dest=/etc/my.cnf owner=root group=root backup=yes
 
 - name: copy update mysql root password script to client
-  template: src=update_initial_root_password.sh dest={{ source_dir }}/update_initial_root_password.sh owner=root group=root
+  template: src=update_initial_root_password.sh.j2 dest={{ source_dir }}/update_initial_root_password.sh owner=root group=root
 
 - name: copy mysql source code to client
   copy: src={{ mysql_package_name }}.tar.gz dest={{ source_dir }} owner=root group=root
@@ -16,5 +16,5 @@
     - tar
 
 - name: copy mysql install script to client
-  template: src=mysql_install.sh dest={{ source_dir }} owner=root group=root mode=0755
+  template: src=mysql_install.sh.j2 dest={{ source_dir }}/mysql_install.sh owner=root group=root mode=0755
 
