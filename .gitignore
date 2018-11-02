@@ -1,8 +1,5 @@
 ##ignore this file##
 /mysql_install/files/mysql-5.7.22-linux-glibc2.12-x86_64.tar.gz
-/mysql_install/files/garbage.file
-
-gitpush.sh
 
 *.retry
 
