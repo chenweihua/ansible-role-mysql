@@ -1,0 +1,11 @@
+- name: append env
+  shell: echo "export PATH=\$PATH:{{ mysql_basedir }}/mysql/bin" >> ~/.bashrc
+
+- name: create mysqld.service
+  template: src=mysqld.service dest=/usr/lib/systemd/system/mysqld.service
+
+- name: soft link to mysqld.service
+  file: src=/usr/lib/systemd/system/mysqld.service  path=/etc/systemd/system/multi-user.target.wants/mysqld.service state=link
+
+# - name: startup mysqld on boot
+#   service: name=mysqld enabled=yes

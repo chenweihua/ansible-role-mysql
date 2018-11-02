@@ -1,0 +1,10 @@
+- name: Restart mysqld
+  service: name=mysqld state=restarted
+
+- name: delete the update password script
+  file: path={{ source_dir }}/update_initial_root_password.sh state=absent
+
+# - name: Update initial root password
+#   shell: /usr/bin/sh {{ source_dir }}/update_initial_root_password.sh
+#   notify: 
+#    - delete the update password script

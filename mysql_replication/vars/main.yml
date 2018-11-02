@@ -1,0 +1,22 @@
+mysql_replication_user:
+    name: bak
+    password: bak123
+    host: "%"
+    priv: '*.*:REPLICATION SLAVE,REPLICATION CLIENT'
+
+mysql_login_user: 
+    name: root
+    password: admin123
+    unix_socket: /tmp/mysql.sock
+
+mysql_replication_master: 192.168.160.192
+
+mysql_user_home: /root
+mysql_user_username: root
+mysql_user_password: admin123
+mysql_user_socker: /tmp/mysql.sock
+
+mysql_root_home: /root
+mysql_root_username: root
+mysql_root_password: admin123
+mysql_root_socker: /tmp/mysql.sock

@@ -1,0 +1,8 @@
+# when The Install is finish, update root password to the below
+mysql_root_password: admin123
+
+mysql_package_name: mysql-5.7.22-linux-glibc2.12-x86_64
+source_dir: /tmp 
+# mysql_server_id: 3306189
+mysql_datadir: /data/mysql
+mysql_basedir: /usr/local

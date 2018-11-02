@@ -1,0 +1,18 @@
+- name: untar mysql.tar.gz
+  unarchive: src={{ source_dir }}/{{ mysql_package_name }}.tar.gz dest={{ mysql_basedir }}/ remote_src=yes
+  tags: 
+    - tar
+
+- name: soft link mysql package
+  file: src={{ mysql_basedir }}/{{ mysql_package_name }} path={{ mysql_basedir }}/mysql owner=mysql group=mysql state=link
+
+- name: install mysql with shell script
+  shell: /usr/bin/sh {{ source_dir }}/mysql_install.sh
+  register: result
+
+
+- name: Update initial root password
+  shell: /usr/bin/sh {{ source_dir }}/update_initial_root_password.sh
+  when: result|success
+  notify: 
+   - delete the update password script

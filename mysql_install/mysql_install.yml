@@ -1,0 +1,5 @@
+---
+    - hosts: mysql
+      remote_user: zmhuang
+      roles:
+          - mysql_install

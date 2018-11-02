@@ -1,0 +1,3 @@
+[mysql]
+192.168.160.193 mysql_server_id=3306193
+192.168.160.192 mysql_server_id=3306192
