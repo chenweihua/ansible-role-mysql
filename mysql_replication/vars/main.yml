@@ -1,6 +1,6 @@
 mysql_replication_user:
-    name: bak
-    password: bak123
+    name: repl
+    password: repl123
     host: "%"
     priv: '*.*:REPLICATION SLAVE,REPLICATION CLIENT'
 
