@@ -1,0 +1,18 @@
+- name: Ensure mysql backup dir exists
+  file: path={{ mysql_backupdir_prefix }} owner=mysql group=mysql state=directory
+
+- name: Ensure MySQL-python package is ready
+  yum: name=MySQL-python state=present
+  tags:
+   - python
+  
+- name: Ensure mysql backup user exists
+  mysql_user: 
+    login_user: "{{ mysql_login_user.name }}"
+    login_password: "{{ mysql_login_user.password }}"
+    login_unix_socket: "{{ mysql_login_user.unix_socket }}"
+    name: "{{ mysql_backup_user.name }}" 
+    password: "{{ mysql_backup_user.password }}"
+    host: "{{ mysql_backup_user.host }}"
+    priv: "{{ mysql_backup_user.priv | default('*.*:RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT') }}"
+    state: present

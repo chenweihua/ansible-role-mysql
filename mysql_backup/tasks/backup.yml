@@ -1,0 +1,8 @@
+- name: copy backup_msyql.sh to client
+  template: src=backup_mysql.sh.j2 dest={{ mysql_backup_user.homedir }}/backup_mysql.sh owner=root group=root backup=yes mode=0770
+
+- name: copy restore_msyql.sh to client
+  template: src=restore_mysql.sh.j2 dest={{ mysql_backup_user.homedir }}/restore_mysql.sh owner=root group=root backup=yes mode=0770
+
+- name: Set crontab to execute backup as schedule
+  cron:
