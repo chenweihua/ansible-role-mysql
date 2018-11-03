@@ -19,3 +19,4 @@ mysql_login_user:
     password: admin123
     unix_socket: /tmp/mysql.sock
 
+source_dir: /tmp

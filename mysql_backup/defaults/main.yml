@@ -1,2 +1,24 @@
+mysql_config_file: /etc/my.cnf
+mysql_backupname_prefix: ZabbixBackup
+mysql_backupdir_prefix: /data/backup
+
+mysql_datadir: /data/mysql
+
+mysql_backup_cmd: /usr/bin/innobackupex
+
+mysql_backup_user:
+    name: bakuser
+    password: bak123
+    socket: /tmp/mysql.sock
+    host: "%"
+    priv: '*.*:RELOAD,LOCK TABLES,PROCESS,REPLICATION CLIENT'
+    homedir: /root
+
+mysql_login_user: 
+    name: root
+    password: admin123
+    unix_socket: /tmp/mysql.sock
+
+source_dir: /tmp
 mysql_dirowner: mysql
 mysql_dirgroup: mysql

@@ -5,6 +5,22 @@
   yum: name=MySQL-python state=present
   tags:
    - python
+
+- name: Copy xtrabackup to client
+  copy: 
+    src: percona-xtrabackup-24-2.4.12-1.el7.x86_64.rpm
+    dest: "{{ source_dir }}"
+    owner: root
+    group: root
+  register: result
+  tags: 
+    - tar
+
+- name: Yum localinstall xtrabackup 
+  yum: 
+    name: "{{ source_dir }}/percona-xtrabackup-24-2.4.12-1.el7.x86_64.rpm"
+    state: present
+  when: result|success
   
 - name: Ensure mysql backup user exists
   mysql_user: 
