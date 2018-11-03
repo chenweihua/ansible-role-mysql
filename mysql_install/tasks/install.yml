@@ -1,3 +1,14 @@
+- name: optimize kernel parameter
+  sysctl: 
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+    reload: yes
+  with_items:
+    - { name: 'vm.swappiness', value: '1' }
+    - { name: 'vm.dirty_ratio', value: '20' }
+    - { name: 'vm.dirty_background_ratio', value: '30' }
+
 - name: untar mysql.tar.gz
   unarchive: src={{ source_dir }}/{{ mysql_package_name }}.tar.gz dest={{ mysql_basedir }}/ remote_src=yes
   tags: 
