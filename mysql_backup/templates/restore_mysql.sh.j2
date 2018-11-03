@@ -4,9 +4,9 @@ set -eu
 # set -x
 # set -o pipefail
 
-# MYSQL_USER={{ mysql_user }}
-# MYSQL_PASSWORD={{ mysql_password }}
-# MYSQL_SOCKET={{ mysql_socker }}
+# MYSQL_USER={{ mysql_backup_user.name }}
+# MYSQL_PASSWORD={{ mysql_backup_user.password }}
+# MYSQL_SOCKET={{ mysql_backup_user.socket }}
 DEFAULTSFILE={{ mysql_config_file }}
 # BACKUPNAME_prefix={{ mysql_backupname_prefix }}
 BACKUPDIR_prefix={{ mysql_backupdir_prefix }}

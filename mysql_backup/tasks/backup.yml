@@ -6,3 +6,10 @@
 
 - name: Set crontab to execute backup as schedule
   cron:
+    name: ansible execute mysql backup as schedule
+    job: /usr/bin/sh {{ mysql_backup_user.homedir }}/backup_mysql.sh
+    user: root
+    minute: 03
+    hour: 1
+    state: present
+    backup: yes

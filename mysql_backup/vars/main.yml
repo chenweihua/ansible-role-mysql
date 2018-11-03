@@ -11,8 +11,8 @@ mysql_backup_user:
     password: bak123
     socket: /tmp/mysql.sock
     host: "%"
-    priv: '*.*:RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT'
-    homedir: /home/bakuser
+    priv: '*.*:RELOAD,LOCK TABLES,PROCESS,REPLICATION CLIENT'
+    homedir: /root
 
 mysql_login_user: 
     name: root
