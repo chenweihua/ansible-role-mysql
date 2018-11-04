@@ -1,3 +1,13 @@
+- name: Optimize ulimit
+  pam_limits: 
+    domain: "*"
+    limit_type: "{{ item[0] }}"
+    limit_item: "{{ item[1] }}"
+    value: 65535
+  with_nested:
+    - ['soft','hard']
+    - ['nproc','nofile']
+
 - name: optimize kernel parameter
   sysctl: 
     name: "{{ item.name }}"
