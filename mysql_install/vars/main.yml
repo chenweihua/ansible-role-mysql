@@ -9,4 +9,4 @@ mysql_basedir: /usr/local
 
 # If any change has to reboot the os system, can we reboot it? set to 'true' to enable it.
 # Now in our playbook, when we change the selinux, we might have to reboot it.
-REBOOT_OS_SYSTEM: true
+REBOOT_OS_SYSTEM: false
