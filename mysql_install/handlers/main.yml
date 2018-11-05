@@ -4,11 +4,25 @@
 - name: delete the update password script
   file: path={{ source_dir }}/update_initial_root_password.sh state=absent
 
-- name: Reboot OS system
-  shell: init 6
-  when: REBOOT_OS_SYSTEM
-
 # - name: Update initial root password
 #   shell: /usr/bin/sh {{ source_dir }}/update_initial_root_password.sh
 #   notify: 
 #    - delete the update password script
+
+# https://www.jeffgeerling.com/blog/2018/reboot-and-wait-reboot-complete-ansible-playbook
+- name: Reboot OS system
+  shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
+  notify:
+    - Wait for the reboot to complete if there was a change
+  when: REBOOT_OS_SYSTEM
+
+- name: Wait for the reboot to complete if there was a change
+  wait_for_connection: 
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 300
+  when: REBOOT_OS_SYSTEM
+
