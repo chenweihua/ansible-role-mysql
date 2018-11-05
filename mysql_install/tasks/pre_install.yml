@@ -4,6 +4,7 @@
     limit_type: "{{ item[0] }}"
     limit_item: "{{ item[1] }}"
     value: 65535
+  # backup: yes
   with_nested:
     - ['soft','hard']
     - ['nproc','nofile']
@@ -18,6 +19,12 @@
     - { name: 'vm.swappiness', value: '1' }
     - { name: 'vm.dirty_ratio', value: '20' }
     - { name: 'vm.dirty_background_ratio', value: '30' }
+
+- name: Ensure selinux is closed
+  selinux:
+    state: disabled
+  notify:
+    - Reboot OS system
 
 - name: create mysql user
   user: name=mysql

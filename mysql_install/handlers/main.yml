@@ -4,6 +4,10 @@
 - name: delete the update password script
   file: path={{ source_dir }}/update_initial_root_password.sh state=absent
 
+- name: Reboot OS system
+  shell: init 6
+  when: REBOOT_OS_SYSTEM
+
 # - name: Update initial root password
 #   shell: /usr/bin/sh {{ source_dir }}/update_initial_root_password.sh
 #   notify: 
