@@ -3,7 +3,7 @@
   tags:
    - python
 
-# create user 'bak'@'192.168.160.%' identified by 'bak123';grant replication slave on *.* to 'bak'@'192.168.160.%';flush privileges;
+# create user 'repl'@'%' identified by 'repl123';grant replication slave on *.* to 'repl'@'%';flush privileges;
 - name: Ensure replication user exists on master
   mysql_user: 
     login_user: "{{ mysql_login_user.name }}"
