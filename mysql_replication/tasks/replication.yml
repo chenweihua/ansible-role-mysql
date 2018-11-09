@@ -6,9 +6,9 @@
 # create user 'repl'@'%' identified by 'repl123';grant replication slave on *.* to 'repl'@'%';flush privileges;
 - name: Ensure replication user exists on master
   mysql_user: 
-    login_user: "{{ mysql_login_user.name }}"
-    login_password: "{{ mysql_login_user.password }}"
-    login_unix_socket: "{{ mysql_login_user.unix_socket }}"
+    # login_user: "{{ mysql_login_user.name }}"
+    # login_password: "{{ mysql_login_user.password }}"
+    # login_unix_socket: "{{ mysql_login_user.unix_socket }}"
     name: "{{ mysql_replication_user.name }}" 
     password: "{{ mysql_replication_user.password }}"
     host: "{{ mysql_replication_user.host }}"

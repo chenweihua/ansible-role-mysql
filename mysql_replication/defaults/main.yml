@@ -4,12 +4,7 @@ mysql_replication_user: []
 mysql_replication_role: ''
 mysql_replication_master: ''
 
-mysql_user_home: /root
-mysql_user_username: root
-mysql_user_password: admin123
-mysql_user_socker: /tmp/mysql.sock
-
 mysql_root_home: /root
 mysql_root_username: root
 mysql_root_password: admin123
-mysql_root_socker: /tmp/mysql.sock
+mysql_root_socket: /tmp/mysql.sock
