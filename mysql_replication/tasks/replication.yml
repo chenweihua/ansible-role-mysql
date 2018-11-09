@@ -3,9 +3,6 @@
   tags:
    - python
 
-- name: create fact mysql path
-  set_fact: mysql_path={{ mysql_basedir }}/mysql/bin:{{ ansible_env.PATH }}
-
 # create user 'repl'@'%' identified by 'repl123';grant replication slave on *.* to 'repl'@'%';flush privileges;
 - name: Ensure replication user exists on master
   mysql_user: 
