@@ -1,5 +1,10 @@
-- name: append env
-  shell: echo "export PATH=\$PATH:{{ mysql_basedir }}/mysql/bin" >> ~/.bashrc
+- name: appedd env
+  copy:
+    dest: /etc/profile.d/custom-path.sh
+    content: "PATH=$PATH:{{ mysql_basedir }}/mysql/bin"
+
+# - name: append env
+#   shell: echo "export PATH=\$PATH:{{ mysql_basedir }}/mysql/bin" >> ~/.bashrc
 
 - name: create mysqld.service
   template: src=mysqld.service.j2 dest=/usr/lib/systemd/system/mysqld.service
