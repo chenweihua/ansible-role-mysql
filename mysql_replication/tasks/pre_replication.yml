@@ -16,3 +16,8 @@
     dest: "{{ mysql_root_home }}/.my.cnf"
     owner: "{{ mysql_root_username }}"
     mode: 0600
+
+# create fact mysql path for the next play can just use The mysql cmd, 
+# not the absolute path 
+- name: create fact mysql path
+  set_fact: mysql_path={{ mysql_basedir }}/mysql/bin:{{ ansible_env.PATH }}

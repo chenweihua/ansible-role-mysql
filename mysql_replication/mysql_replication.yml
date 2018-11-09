@@ -1,6 +1,9 @@
 ---
     - hosts: mysql
       remote_user: zmhuang
+      # # We must gather facts
       # gather_facts: false
+      # environment:
+      #   PATH: "/usr/local/mysql/bin:{{ (ansible_env|default({})).PATH|default('') }}"
       roles:
           - mysql_replication

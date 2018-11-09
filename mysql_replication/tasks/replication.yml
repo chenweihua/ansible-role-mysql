@@ -3,6 +3,9 @@
   tags:
    - python
 
+- name: create fact mysql path
+  set_fact: mysql_path={{ mysql_basedir }}/mysql/bin:{{ ansible_env.PATH }}
+
 # create user 'repl'@'%' identified by 'repl123';grant replication slave on *.* to 'repl'@'%';flush privileges;
 - name: Ensure replication user exists on master
   mysql_user: 
@@ -21,7 +24,9 @@
 
 # config master
 - name: Install rpl_semi_sync_master plugin
-  shell: /usr/local/mysql/bin/mysql -NBe "install plugin rpl_semi_sync_master soname 'semisync_master.so';"
+  shell: mysql -NBe "install plugin rpl_semi_sync_master soname 'semisync_master.so';"
+  environment: 
+    PATH: "{{ mysql_path }}"
   register: rpl_semi_sync_master
   when: >
     mysql_replication_role == 'master'
@@ -40,7 +45,9 @@
 
 # config slave
 - name: Install rpl_semi_sync_slave plugin
-  shell: /usr/local/mysql/bin/mysql -NBe "install plugin rpl_semi_sync_slave soname 'semisync_slave.so';"
+  shell: mysql -NBe "install plugin rpl_semi_sync_slave soname 'semisync_slave.so';"
+  environment: 
+    PATH: "{{ mysql_path }}"
   register: rpl_semi_sync_slave
   when: >
     mysql_replication_role == 'slave'
