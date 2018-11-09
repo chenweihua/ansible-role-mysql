@@ -72,7 +72,6 @@
     master_user: "{{ mysql_replication_user.name }}"
     master_password: "{{ mysql_replication_user.password }}"
     master_auto_position: 1
-  ignore_errors: true
   when: >
     (mysql_replication_role == 'slave')
     and (mysql_replication_master != '')
