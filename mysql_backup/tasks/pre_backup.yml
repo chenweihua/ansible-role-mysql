@@ -32,3 +32,8 @@
     host: "{{ mysql_backup_user.host }}"
     priv: "{{ mysql_backup_user.priv | default('*.*:RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT') }}"
     state: present
+  when:
+    (mysql_is_replication == 'yes' and mysql_replication_role == 'master')
+    or (mysql_is_replication == 'no')
+  tags:
+    - bakuser

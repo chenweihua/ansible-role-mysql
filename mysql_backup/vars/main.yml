@@ -19,4 +19,10 @@ mysql_login_user:
     password: admin123
     unix_socket: /tmp/mysql.sock
 
+# A flag to say: whether the MySQLs is a replication
+# if it is a replication, only the master will execute some play.
+# Right now, only the master will execute the "Ensure mysql backup user exists" play.
+# yes/no
+mysql_is_replication: 'yes'
+
 source_dir: /tmp

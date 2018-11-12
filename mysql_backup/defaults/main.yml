@@ -19,6 +19,8 @@ mysql_login_user:
     password: admin123
     unix_socket: /tmp/mysql.sock
 
+mysql_is_replication: yes
+
 source_dir: /tmp
 mysql_dirowner: mysql
 mysql_dirgroup: mysql
